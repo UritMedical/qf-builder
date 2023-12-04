@@ -1,0 +1,29 @@
+Module: Demo|范例API
+Route: demo
+Groups:
+  #workload 工作量相关
+  - Group: workloads|工作量相关
+    Heads:
+    - token|Head|string|token
+    Apis:
+    #查询指定机构的工作量月统数据
+    - Api: WorkloadsGetMonthly|monthly|Get|查询指定机构的工作量月统数据 逆序
+      Query:
+        - maxCount|int|最大返回数量
+        - endYear|int|年份
+        - endMonth|int|月份
+        - orgId|uint64|机构id
+      Return: WorkLoadMonth%|工作月统列表
+
+    #导出指定时间区间的明细数据excel表格
+    - Api: workLoadsGetMonthlyDetails|details|Get|返回指定时间区间的明细数据
+      Query:
+        - startDate|Date|起始时间
+        - endDate|Date|截止时间
+        - orgId|uint64|机构id
+      Return: WorkLoadDetail%|方案测试明细数据
+Notices:
+- Notice: Test|测试
+  Params:
+  - id|uint64|id
+  - name|string|name

@@ -1,0 +1,62 @@
+[Index]
+{{Imports}}
+export const Apis = {
+{{Exports}}
+}
+[EndIndex]
+---
+
+[IndexImport]
+import {{{ModuleName}}Api} from "@/define/apis/{{ModuleFile}}"
+[EndIndexImport]
+---
+[IndexExport]
+    //{{Comment}}
+	{{Name}}: {{Name}}Api,
+[EndIndexExport]
+---
+[IndexProp]
+	{{GroupName}}: {{GroupName}}Api,
+[EndIndexProp]
+---
+===================================================================
+
+[Module]
+import {Qf} from "$/qf";
+import  {Models} from "@/define/models";
+const  pre  = "{{Route}}/";
+export const {{Name}}Api ={
+{{Apis}}
+}
+[EndModule]
+---
+
+[Api]
+    //{{Comment}}
+    {{Name}}({{ParamsInputs}}): Promise<{{Return}}> {
+        return Qf.Request.{{ReqType}}(pre+"{{Route}}", {
+{{ParamSets}}
+        })
+    },
+[EndApi]
+---
+
+[ApiComment]
+{{Comment}} {{ParamComments}}
+[EndApiComment]
+---
+
+[ParamInput]
+{{Name}} :{{Type}}
+[EndParamInput]
+---
+
+[ParamSet]
+            {{Name}}:{{Name}},
+[EndParamSet]
+---
+
+[ParamComment]
+{{Name}} :{{Comment}}
+[EndParamComment]
+---

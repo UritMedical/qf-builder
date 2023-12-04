@@ -1,0 +1,18 @@
+[Root]
+//类型定义 使用时可以导出整个包或导出单个接口
+export namespace Models{
+{{Models}}
+}
+[EndRoot]
+---
+[Model]
+    //{{Comment}}
+    export interface {{Name}} {
+{{Props}}
+    }
+[EndModel]
+---
+[Prop]
+        {{Name}}: {{Model}}//{{Comment}}
+[EndProp]
+---

@@ -1,0 +1,81 @@
+Module: DemoUser|Demo用户及角色
+Route: demo/users
+Groups:
+#login 用户登录
+- Group: login|登录
+  Apis:
+    #手机号登录
+    - Api: Login||post|登录
+      Json:
+        - phone|string|手机号码
+        - pwd|string|登陆密码
+      Return: string|token
+#my 当前用户
+- Group: my|当前用户
+  Head:
+    - token|string|token
+  Apis:
+    #修改当前登陆用户的密码
+    - Api: ChangePwd|pwd|Put|修改当前登陆用户的密码
+      Json:
+      - newPwd|string|新密码
+      - oldPwd|string|老密码
+      Return: bool|是否成功
+
+    #修改手机号码
+    - Api: UpdatePhone|phone|Put|修改手机号码
+      Json:
+      - newPhone|string|新手机
+      - oldPhone|string|老手机
+      - pwd|string|密码
+      Return: bool|是否成功
+
+    #获取当前登陆用户的信息
+    - Api: GetCurrent||Get|获取登陆用户的信息
+      Return: User|用户信息
+    #获取token
+    - Api: GetToken|token|Get|获取token
+      Return: string|token
+
+#根 用户管理
+- Group: /|用户管理
+  Head:
+    - token|Head|string|token
+  Apis:
+  #返回用户列表
+  - Api: Search|search|Get|返回用户列表
+    Json:
+    - start|uint64|起始id
+    - max|byte|最大返回的记录数量 0返回全部
+    Return: User%|用户列表
+
+  #返回指定用户的信息
+  - Api: GetModel||Get|返回指定用户的信息
+    Query:
+      - id|uint64|用户id
+    Return: User|用户信息
+
+  #新增用户
+  - Api: Create||Post|Json|新增用户
+    Json:
+    - root|User|用户
+    Return: uint64|新用户id
+
+  #修改用户信息
+  - Api: Update||Put|修改用户信息
+    Json:
+    - root|User|用户
+    Return: bool|是否成功
+    #微信解绑
+
+  #禁用用户
+  - Api: Delete||Del|禁用用户
+    Query:
+    - id|uint64|用户id
+    Return: bool|是否成功
+
+  #重置密码
+  - Api: ResetPwd|reset|Put|重置密码
+    Query:
+    - id|uint64|用户id
+    Return: bool|是否成功

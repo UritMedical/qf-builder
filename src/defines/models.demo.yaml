@@ -1,0 +1,39 @@
+Models:
+  - Model: User|用户
+    Props:
+    - Id|uint64|用户id
+    - Name|string|用户名
+    - Phone|string|手机号
+    - Roles|%Role|角色
+  - Model: Role|角色
+    Props:
+      - Id|string|权限Id
+      - Name|string|权限名
+  #机构信息
+  - Model: Org|机构信息
+    Props:
+    - Id|uint64|机构id
+    - Name|string|机构名称
+    - NickName|string|机构昵称
+    - AreaCode|string|机构行政编码
+    - Area|string|机构区域
+    - Address|string|机构地址
+    - Contact|string|联系信息
+    - Keywords|string|关键字
+  - Model: Demo|机构信息
+    Props:
+      - LongProp|long|测试long
+      - IntProp|int|测试int
+      - ByteProp|byte|测试byte
+      - DoubleProp|double|测试double
+      - UInt16Prop|uint16|测试uint16
+      - UInt32Prop|uint16|测试uint32
+      - UShortProp|ushort|测试ushort
+      - FloatProp|float|测试float
+      - BoolProp|bool|测试bool
+      - StringProp|string|测试string
+      - DateTimeProp|datetime|测试datetime
+      - DateProp|date|测试date
+      - TimeProp|time|测试time
+      - GuidProp|guid|测试guid
+      - DecimalProp|decimal|测试decimal

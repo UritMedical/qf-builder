@@ -1,0 +1,20 @@
+#此为vue3前端项目生成配置模板
+#生成类型 前端项目
+type: front
+project: awesome
+##语言 vue3 可省略
+#lang: vue3
+## 定义路径 可省略 默认为./define
+#define: ./define
+##代码输出路径 可省略 默认为当前目录最后一个节加上_front_vue3
+#output: ./${project}_front_vue3
+## 是否强制覆盖 可省略 默认为false
+#cover: false
+#
+src:
+  - front/project/desktop/std@latest
+  - front/style/desktop/std@latest
+##风格 标准 可省略
+#style: std
+##初始化脚本 可省略 省略则不执行任何初始化脚本
+#init: yarn upgrade
